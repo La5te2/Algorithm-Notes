@@ -4,28 +4,32 @@
   <meta charset="UTF-8">
   <title>Algorithm Notes</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Algorithm Notes">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Docsify 主题 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 
-  <!-- MathJax 引入 -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  <!-- MathJax 配置 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
 </head>
 <body>
   <div id="app"></div>
 
   <script>
     window.$docsify = {
-      name: 'Algorithm Notes',                       // 网站标题
-      repo: 'https://github.com/La5te2/Algorithm-Notes',  // GitHub 仓库
-      loadSidebar: true,                             // 开启侧边栏
-      loadNavbar: false,                              // 顶部导航栏（可改为 false）
-      afterEach: function() {                        // 页面切换后渲染公式
+      name: 'Algorithm Notes',
+      repo: 'https://github.com/La5te2/Algorithm-Notes',
+      loadSidebar: true,
+      loadNavbar: false,
+      afterEach: function() {
         if (window.MathJax) {
           MathJax.typesetPromise();
         }
@@ -33,8 +37,6 @@
     }
   </script>
 
-  <!-- Docsify 核心脚本 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 </body>
 </html>
-
