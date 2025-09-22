@@ -1,3 +1,3 @@
-# Headline
+# Algorithm Notes
 
-> An awesome project.
+> Created by La5te2
