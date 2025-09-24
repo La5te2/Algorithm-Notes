@@ -41,6 +41,7 @@
 \makeatother
 \graphicspath{{image/}}
 
+
 \newpage
 \part{数论}
 \section{数论基础}
@@ -482,13 +483,14 @@ for(int i = 1; i <= tot; i++)
 	\item 根据斜对称和流量守恒，有 $|f|=f(s)=-f(t)$，称为当前流 $f$ 的流量。最大流量为所有合法 $f$ 中 $|f|$ 的最大值。
 	\item 定义流 $f$ 在网络 $G$ 上的残量网络 $G_f=(\mathbf{V},\mathbf{E}_f)$ 为容量函数 $c_f=c-f$ 的网络。根据容量限制，有 $c_f(u,v)\ge0$，等号成立时视 $(u,v)$ 在 $G_f$ 上不存在。
 	\item 定义增广路为残量网络 $G_f=(\mathbf{V},\mathbf{E}_f)$ 上一条从源点 $s$ 到汇点 $t$ 的路径。
-	\item 将 $\mathbf{V}$ 分成不相交的两个点集 $S,T$ 且 $s\in S, t\in T$，这种划分方式称为割，定义割的容量为 $\displaystyle c_c=\sum_{u\in S}\sum_{v\in T}c(u,v)$，流量为 $\displaystyle f_c=\sum_{u\in S}\sum_{v\in T}f(u,v)$。
+	\item 将 $\mathbf{V}$ 分成不相交的两个点集 $S,T$ 且 $s\in S, t\in T$，这种划分方式称为 $s-t$ 割，定义其容量为 $\displaystyle c_c=\sum_{u\in S}\sum_{v\in T}c(u,v)$，流量为 $\displaystyle f_c=\sum_{u\in S}\sum_{v\in T}f(u,v)$。
 	\item 当 $u,v$ 属于不同点集时，称 $(u,v)$ 为割边。当 $c_c$ 最小时称最小割，记为 $\|S,T\|$。
 \end{itemize}
 \subsection{最大流}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	给定网络 $G=(\mathbf{V}, \mathbf{E})$ 和源汇点，求最大流量(Max Flow)。
 \end{mdframed}
+\subsubsection{Ford–Fulkerson增广}
 考虑贪心：找到残量网络 $G_f$ 上的一条增广路 $P$ 并为 $P$ 上每一条边增加 $\displaystyle c_f(P)=\min_{(u,v)\in P}c_f(u,v)$ 的流量，此过程称为增广，重复增广直到 $G_f$ 上不存在增广路。\\\\
 显然，如果增加的流量大于该值，一些边将不满足容量限制，而根据能流满就流满的思想，增加的流量也不应小于该值。这种贪心不一定是正确的，考虑下图：
 \begin{figure}[H]
@@ -553,8 +555,28 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 % 省略对于其时间复杂度的证明，直到笔者看懂为止。
 
 \subsubsection{预流推进算法}
+
+\newpage
+\subsection{最小割树}
+\begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
+	将 $\mathbf{V}$ 分成互不相交的两个点集 $S,T$，当 $u\in S,v\in T$ 时将该割称为关于 $u,v$ 的割，记为 $\{u,v\}$。称 $\{u,v\}$ 的最小割为所有关于 $u,v$ 的割中容量最小的割，记为 $\|u,v\|$。给定一张带非负权的 $n$ 阶无向图，边数为 $m$，有 $q$ 个询问，每个询问给定一个非负整数 $x$，求图中有多少个无序点对的最小割的容量不超过 $x$。
+\end{mdframed}
+首先新建一张无边 $n$ 阶无向图 $G'$，然后在原图 $G$ 中任意选两个点 $s,t$，求出其最小割 $c=\|s,t\|$，并在 $G'$ 中在 $s,t$ 之间连一条边权为 $c$ 的无向边。递归地在 $s$ 所属的点集和 $t$ 所属的点集中重复上述过程，直到当前集合中只剩一个点。这个过程所构建的新图 $G'$ 为一棵树，称为最小割树，树上任意两个点在原图中的对应点之间的最小割值等于这两个点的树上路径中边权的最小值，下面证明该结论：\\
+\\
+回到原题，预处理出最小割树后，问题转化为：给定一颗 $n$ 阶非负权无根树，定义两点之间的距离为两点之间路径中的最小边权，每个询问给定非负整数 $x$，求距离小于等于 $x$ 的无序点对数量。考虑Kruskal重构树：将边权后放入大根堆，然后依次取出，在并查集上合并每条边两边端点所在的集合，并维护集合大小。设合并的两点 $\{x,y\}$ 所在的集合大小为 $s_x,s_y$，则有 $s_x\times s_y$ 个无序点对的距离为该边边权。设距离为 $w$ 的无序点对数量总共有 $p_w$ 个，则对于每次询问，通过在 $p$ 对应的前缀和数组上二分得到答案。总的时间复杂度为 $O(n^3m+n\log{n}+q\log{n})$。
+
 \subsection{有界流} % 上下界网络流
 \subsection{费用流}
+\begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
+	给定网络 $G=(\mathbf{V},\mathbf{E},c,w)$，若单位流量费用 $w(u,v)$ 也满足斜对称性，则将网络中总花费 $f\times w$ 最小的最大流称为最小费用最大流，即最大化 $|f|$ 的前提下最小化 
+	\begin{equation*}
+		\sum_{(u,v)\in\mathbf{E}}f(u,v)\times w(u,v)
+	\end{equation*}
+\end{mdframed}
+\subsubsection{SSP算法}
+\subsubsection{Primal-Dual算法}
+\subsubsection{zkw费用流}
+\subsubsection{带负圈费用流}
 \subsection{线性规划}
 \newpage
 \section{二分图}
@@ -574,6 +596,9 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 \subsubsection{DFS序}
 \subsubsection{树链剖分}
 \subsection{树上差分}
+\newpage
+\section{树链剖分}
+
 \newpage
 \part{线性代数}
 \section{线性基}
@@ -721,6 +746,44 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 
 \newpage
 \part{博弈论}
+\section{公平组合博弈}
+\subsection{基本定义}
+公平组合博弈（Impartial Game）指的是满足如下条件的博弈：
+\begin{itemize}
+	\item 两个玩家交替行动、信息完全、没有概率成分、局面有限且终局明确的博弈（组合博弈）；
+	\item 在任意确定状态下，所有参与者可选择的行动完全相同，仅取决于当前状态，与身份无关（公平博弈）；
+	\item 博弈中的同一个状态不可能多次抵达，博弈以参与者无法行动为结束，且博弈一定会在有限步后以非平局结束（非反常博弈）；
+	\item 交换两个玩家的身份，收益函数不变（对称博弈）。
+\end{itemize}
+在一个公平组合游戏中，每个玩家是否有必胜策略，只取决当前游戏所处的状态而与玩家的身份无关。因此，所有状态可以分为先手必胜状态 和先手必败状态，分别记为 $\mathcal N$ 态和 $\mathcal P$ 态。这个定义适用于所有公平组合游戏，从而可以归纳地将正常规则的公平组合游戏中所有状态标记为必胜状态和必败状态：
+\begin{itemize}
+	\item 没有后继状态的状态是必败状态 $\mathcal P$；
+	\item 一个状态是必胜状态 $\mathcal N$ 当且仅当存在至少一个它的后继状态为必败状态 $\mathcal P$；
+	\item 一个状态是必败状态 $\mathcal P$ 当且仅当它的所有后继状态均为必胜状态 $\mathcal N$。
+\end{itemize}
+
+\newpage
+\subsection{简单Nim游戏}
+\begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
+	共有 $n$ 堆石子，第 $i$ 堆有 $a_i$ 枚石子。两名玩家轮流取走任意一堆中的任意多枚石子，但不能不取。取走最后一枚石子的玩家获胜。判断先手是否必胜。
+\end{mdframed}
+容易验证，Nim 游戏是正常规则的公平组合游戏，其局面/状态（双方玩家过往的行动、已经实现的随机变量值、双方已知信息的内容等）可能的变化可以用博弈图来描述：将每一个可能的状态都看作是图中的一个结点，并将状态向它的后继状态（即通过一次操作可以达到的状态）连边，得到一个有向无环图。博弈图是无环的，因为 Nim 游戏中，每次操作，石子的总数量都是严格减少的。例如，对于初始局面有 $3$ 堆石子，且每堆石子的数量分别为 $1,1,2$ 的 Nim 游戏，可以绘制如下的博弈图：
+\begin{figure}[H]
+	\centering
+	% \raggedright
+	\includegraphics[width=0.4\textwidth]{game1.png}
+	% \caption{(1)}
+	% \label{fig:example}
+\end{figure}
+\noindent 其中红色结点表示必胜状态，黑色结点表示必败状态。\\
+假设在某一时刻第 $i$ 堆有 $A_i(0\le A_i\le a_i)$ 枚石子，定义其Nim和为 $k=A_1\oplus A_2\cdots\oplus A_n$，其状态为必败状态 $\mathcal P$ 当且仅当Nim和为 $0$，证明如下：
+\begin{enumerate}
+	\item 如果对于 $\forall i\in[1,n],A_i=0$，则该状态没有后继状态，且 $k=0$，命题成立。
+	\item 如果 $k\ne0$，构造一个合法移动，使得后继状态为必败状态：由归纳假设，只需要证明存在后继状态满足 $k'=0$ 即可。设 $k$ 的二进制表示中，最高位的 $1$ 是第 $d$ 位，则一定存在某个 $A_i$，使得其二进制第 $d$ 位是 $1$。对于相应的石子堆，一定有 $A_i>A_i\oplus k$。考虑将该石子堆减到 $A'_i=A_i\oplus k$，此时 $k'=A_1\oplus\cdots A'_i\oplus\cdots\oplus A_n=k\oplus k=0$。
+	\item 如果 $k=0$，需要证明该状态是必败状态。由归纳假设可知，只要证明它的所有后继状态的 Nim 和都不是 $0$。这是必然的，任何合法移动将 $A_i$ 变为 $A'_i\neq A_i$，都会使 $k'=k\oplus A_i\oplus A'_i\ne0$。
+\end{enumerate}
+\subsection{Sprague–Grundy理论}
+SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏由若干个相互独立的子游戏组成时，游戏的状态判定可以通过计算子游戏的SG函数值的Nim和来完成。
 
 \newpage
 \part{多项式}
@@ -729,7 +792,18 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \part{字符串}
 
 \newpage
-\part{数据结构}
+\part{数据结构} % 包含离线算法
+\section{基本结构}
+\subsection{栈} % 包含悬线法
+\subsection{链表} % 包含DLX
+\subsection{队列}
+\subsection{堆} % 包含二叉堆，可并堆，左偏树，斐波那契堆
+\subsection{哈希表} % 包含离散化
+\subsection{并查集}
+\section{RMQ问题}
+\section{树状数组}
+\section{线段树}
+\section{平衡树}
 
 \newpage
 \part{动态规划}
@@ -737,4 +811,16 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 
 \newpage
 \part{其他科技}
+\section{均摊分析}
+\section{计算理论}  % 包含自动机
+\subsection{自动机}
+\subsection{形式语言}
+\subsection{可计算性}
+\subsection{复杂性理论}
+\section{查找算法}
+\subsection{二分/三分}
+\subsection{分数规划}
+\subsection{双指针}
+\section{信息论}
+\section{随机化算法}
 \end{document}
