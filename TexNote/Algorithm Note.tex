@@ -12,6 +12,8 @@
 \usepackage{mdframed}
 \usepackage{graphicx}
 \usepackage{float}
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
 \lstset{
 	language=C++,
 	basicstyle=\ttfamily\small,
@@ -461,11 +463,26 @@ for(int i = 1; i <= tot; i++)
 
 \newpage
 \part{图论} % 包括树论
-\section{最短路问题}
+\section{图论基础}
+
 \newpage
-\section{生成树问题}
+\section{特殊图问题}
+\subsection{二分图}
+\subsection{欧拉图}
+\subsection{哈密顿图}
+\subsection{竞赛图}
+\subsection{弦图}
+\subsection{平面图}
+\subsection{支配树}
+
+\newpage
+\section{最短路问题} % 包括斯坦纳树，最小环
+\newpage
+\section{生成树问题} 
 \newpage
 \section{连通性问题}
+\newpage
+\section{环计数问题}
 \newpage
 \section{网络流}
 \subsection{基本定义}
@@ -563,7 +580,7 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 \end{mdframed}
 首先新建一张无边 $n$ 阶无向图 $G'$，然后在原图 $G$ 中任意选两个点 $s,t$，求出其最小割 $c=\|s,t\|$，并在 $G'$ 中在 $s,t$ 之间连一条边权为 $c$ 的无向边。递归地在 $s$ 所属的点集和 $t$ 所属的点集中重复上述过程，直到当前集合中只剩一个点。这个过程所构建的新图 $G'$ 为一棵树，称为最小割树，树上任意两个点在原图中的对应点之间的最小割值等于这两个点的树上路径中边权的最小值，下面证明该结论：\\
 \\
-回到原题，预处理出最小割树后，问题转化为：给定一颗 $n$ 阶非负权无根树，定义两点之间的距离为两点之间路径中的最小边权，每个询问给定非负整数 $x$，求距离小于等于 $x$ 的无序点对数量。考虑Kruskal重构树：将边权后放入大根堆，然后依次取出，在并查集上合并每条边两边端点所在的集合，并维护集合大小。设合并的两点 $\{x,y\}$ 所在的集合大小为 $s_x,s_y$，则有 $s_x\times s_y$ 个无序点对的距离为该边边权。设距离为 $w$ 的无序点对数量总共有 $p_w$ 个，则对于每次询问，通过在 $p$ 对应的前缀和数组上二分得到答案。总的时间复杂度为 $O(n^3m+n\log{n}+q\log{n})$。
+回到原题，预处理出最小割树后，问题转化为：给定一棵 $n$ 阶非负权无根树，定义两点之间的距离为两点之间路径中的最小边权，每个询问给定非负整数 $x$，求距离小于等于 $x$ 的无序点对数量。考虑Kruskal重构树：将边权后放入大根堆，然后依次取出，在并查集上合并每条边两边端点所在的集合，并维护集合大小。设合并的两点 $\{x,y\}$ 所在的集合大小为 $s_x,s_y$，则有 $s_x\times s_y$ 个无序点对的距离为该边边权。设距离为 $w$ 的无序点对数量总共有 $p_w$ 个，则对于每次询问，通过在 $p$ 对应的前缀和数组上二分得到答案。总的时间复杂度为 $O(n^3m+n\log{n}+q\log{n})$。
 
 \subsection{有界流} % 上下界网络流
 \subsection{费用流}
@@ -577,9 +594,10 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 \subsubsection{Primal-Dual算法}
 \subsubsection{zkw费用流}
 \subsubsection{带负圈费用流}
+\subsection{图论建模}
 \subsection{线性规划}
+
 \newpage
-\section{二分图}
 \section{序理论}
 \subsection{基本定义}
 \subsection{拓扑排序}
@@ -591,13 +609,48 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 \subsection{树的中心}
 \subsection{树的重心}
 \subsection{最近公共祖先}
-\subsubsection{倍增算法}
+\subsubsection{倍增法}
 \subsubsection{欧拉序}
 \subsubsection{DFS序}
-\subsubsection{树链剖分}
 \subsection{树上差分}
+
 \newpage
 \section{树链剖分}
+\subsection{基本定义}
+当没有特别指出时，树链剖分等价于重链剖分。下面给出一些描述性定义：
+\begin{itemize}
+	\item 重结点：子树结点数目最多的结点，记为 $\operatorname{son}(u)$；
+	\item 轻结点：父亲节点中除了重结点以外的结点；
+	\item 重边：父亲结点和重结点连成的边；
+	\item 轻边：父亲节点和轻节点连成的边；
+	\item 重链：由多条重边连接而成的路径，记为 $C_i$；
+	\item 轻链：由多条轻边连接而成的路径；
+	\item 端点：一条重链的顶端结点/起点，记为 $\operatorname{top}(u)$。
+\end{itemize}
+如果有多个候选重结点，任选一个。叶子结点没有轻/重结点，但可以作为重链的起点。\\
+对于长链剖分，其重结点表示其子结点中子树深度最大的子结点，其余定义描述不变。
+\subsection{重链剖分}
+考虑使用两次DFS。第一次DFS记录每个结点的父结点 $\operatorname{fa}(u)$，深度 $\operatorname{dep}(u)$，子树大小 $\operatorname{siz}(u)$ 以及重结点 $\operatorname{son}(u)$。第二次DFS记录每个结点所在重链的端点 $\operatorname{top}(u)$，重边优先遍历时的DFS序 $\operatorname{dfn}(u)$ 以及DFS序对应的结点编号 $\operatorname{rnk}(x)$，即 $\operatorname{rnk}(\operatorname{dfn}(u))\leftarrow u$。\\\\
+观察到树上每个结点都属于且仅属于一条重链，即所有的重链将整棵树完全剖分，证明如下：
+\begin{enumerate}
+	\item 由重链的构造方法，每个结点至多有一个重结点，所以从任意一个结点出发沿着重边向下，其路径是唯一的。
+	\item 对于 $\forall u\in\mathbf{T}$，如果不存在 $i$ 使得 $u,\operatorname{fa}(u)\in C_i$，则 $u=\operatorname{top}(u)$，又 $\operatorname{root}(\mathbf{T})$ 必然是端点，从而任意结点都至少属于一条重链（覆盖性）。
+	\item 一个结点至多是一个结点的重结点，所以任意一个结点至多位于一条重链上，即 $C_i\bigcap C_j=\varnothing,i\ne j$（互斥性），从而每个结点都属于且仅属于一条重链。
+\end{enumerate}
+在剖分时重边优先遍历，则重链内的DFS序是连续的，即按DFN排序后的序列即为剖分后的链。可以发现，当向下经过一条轻边时，所在子树的大小至少会除以二，证明如下：\\\\
+记 $\operatorname{fa}(v)=p$ 且 $(p,v)$ 为轻边，假设 $\displaystyle\operatorname{siz}(v)>\frac{\operatorname{siz}(p)}{2}$，则$\displaystyle2\operatorname{siz}(v)>\operatorname{siz}(p)=1+\sum_{(p,u)\in\mathbf{T}}\operatorname{siz}(u)$
+即
+\begin{equation*}
+	\operatorname{siz}(v)>1+\sum_{u\ne v}\operatorname{siz}(u)
+\end{equation*}
+上式说明 $v$ 的子树大小大于所有其它子结点子树之和，因而必然严格大于每一个其它子结点的子树大小，与 $(p,v)$ 为轻边的假设矛盾。\\
+因此，对于树上的任意一条路径，把它拆分成从 LCA 分别向两边往下走，分别最多走 $O(\log n)$ 次，从而树上的每条路径都可以被拆分成不超过 $O(\log n)$ 条重链。
+
+\newpage
+\subsubsection{路径上维护}
+\begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
+	给定树 $\mathbf{T}$，多次询问树上两点间路径权值和。
+\end{mdframed}
 
 \newpage
 \part{线性代数}
@@ -807,7 +860,29 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 
 \newpage
 \part{动态规划}
-\section{背包DP} % 见pack.pdf
+\section{背包DP} 
+详见pack.pdf
+\subsection{0-1背包}
+\begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
+	有 $N$ 件物品和一个容量为 $V$ 的背包。放入第 $i$ 件物品耗费的费用/容量是 $C_i$，得到的价值是 $W_i$。求解将哪些物品装入背包可使价值总和最大。
+\end{mdframed}
+将此问题分解为子问题：将前 $i$ 件物品放入容量为 $v$ 的背包中得到的最大值，从而每次只用考虑第 $i$ 件物品的策略（不放/放），得到转移方程：
+\begin{equation*}
+	\displaystyle f_{i,v}=\max{\{f_{i-1,v}, f_{i-1,v-C_i}+W_i\}}
+\end{equation*}
+注意到方程中第 $i$ 项仅与第 $i-1$ 项有关，为了保证在第 $i$ 次循环中推 $f_v$ 时 $f_v$ 和 $f_{v-C_i}$ 分别保存其在 $i-1$ 项的值，需要以 $v\leftarrow V\cdots C_i$ 的递减顺序计算 $f_v$，从而有：
+\begin{equation*}
+	\displaystyle f_{v}=\max{\{f_{v}, f_{v-C}+W\}}, v\leftarrow (V\rightarrow C)
+\end{equation*}
+该过程简记为$\operatorname{ZOP}(f, C, W)$，即原问题等价于 $\{\operatorname{ZOP}(f, C_i,W_i)|i\leftarrow(1\rightarrow N)\}$。一个简单的常数优化是，在第 $i$ 次ZOP中，$v$ 的范围是 $\displaystyle V\rightarrow \max{\{C_i, V-\sum_{j=i}^{N}W_j\}}$。\\
+\\
+考虑此时 $f_v$ 的含义，其表示容量为 $v$ 的背包的最大合法解，因此对于要求恰好装满背包的0-1背包问题，初始时应该 $f_0\leftarrow0,f_{1\cdots N}\leftarrow-\infty$，即初始时只有容量为 $0$ 的背包有一个合法解 $0$。如果仅要求最后背包中物品的价值和最大，初始时 $f\leftarrow0$ 即可。 
+
+\subsection{完全背包}
+\begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
+	有 $N$ 种物品和一个容量为 $V$ 的背包。放入第 $i$ 种物品耗费的费用/容量是 $C_i$，得到的价值是 $W_i$，且每种物品有无限个。求解将哪些物品装入背包可使价值总和最大。
+\end{mdframed}
+显然，第 $i$ 种物品放入背包的数量上限是 $\displaystyle\lfloor V/C_i\rfloor$，同时由于每种物品是无限的，如果存在 $i,j\in N$ 使得 $C_i\le C_j,W_i\ge W_j$，将第 $j$ 种物品去掉不会影响答案。
 
 \newpage
 \part{其他科技}
