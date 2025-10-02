@@ -51,6 +51,7 @@
 \subsection{质因数分解}
 \subsection{数论函数}
 \subsection{素数计数} % P7884 Meissel-Lehmer
+\subsection{升幂引理}
 \newpage
 \section{欧拉函数}
 \subsection{定义与性质}
@@ -266,9 +267,9 @@ int MPR(int n, int p, int l, int r) { // minimum primitive root
 	求使得同余关系 $a^n\equiv 1\pmod{m}$ 对所有 $\gcd(a,m)=1$ 都成立的最小正整数 $n$. 
 \end{mdframed}
 \newpage
-\section{Euclid算法}
-\subsection{扩展Euclid算法} %包括辗转相除法
-\subsection{类Euclid算法}
+\section{欧几里得算法}
+\subsection{扩展欧式算法} %包括辗转相除法
+\subsection{类欧式算法}
 \newpage
 \section{同余方程}
 \subsection{裴蜀定理}
@@ -363,8 +364,11 @@ int MPR(int n, int p, int l, int r) { // minimum primitive root
 	h^k\equiv g,h^t\equiv y,g^x\equiv y\Rightarrow h^{kx}\equiv h^t\pmod{p}
 \end{equation*}
 从而 $kx\equiv t\pmod{\varphi(p)}$。解同余方程：若 $d=\gcd(k,\varphi(p))\nmid t$ 则无解，否则令$\displaystyle k'=\frac{k}{d},t'=\frac{t}{d},M=\frac{\varphi(p)}{d}$， $ind_2(y)\equiv t'\cdot (k')^{-1}\pmod M$。
-\subsection{剩余}
+\subsection{N次剩余}
 \subsection{二次剩余}
+
+\newpage
+\section{卢卡斯定理}
 
 \newpage
 \section{数论分块}
@@ -392,11 +396,8 @@ int MPR(int n, int p, int l, int r) { // minimum primitive root
 	- \sum_{i=1}^{n} \Bigl(nm - m i \cdot \lfloor \frac{n}{i} \rfloor - n i \cdot \lfloor \frac{m}{i} \rfloor + \lfloor \frac{n}{i} \rfloor \lfloor \frac{m}{i} \rfloor \cdot i^2 \Bigr)
 \end{align*}
 对于形如 $\displaystyle \sum_{i=1}^{n}(\lfloor\frac{n}{i}\rfloor\times f(i))$ 的求和式，使用整除分块。注意到 $\displaystyle\lfloor\frac{n}{i}\rfloor$ 为一个不下降子序列，且呈块状分布。\\
-
-对于每个以 $l$ 为起点的块，块中每一个元素的值都是 $\displaystyle t=\lfloor\frac{n}{l}\rfloor$，块的终点为 $\displaystyle r=\lfloor\frac{n}{t}\rfloor$，因此可以 $O(1)$ 计算块中元素的和，从而 $O(T\sqrt{n})$ 计算 $\displaystyle\sum_{i=1}^{n}(\lfloor\frac{n}{i}\rfloor\times f(i))$，其中 $T$ 取决于计算 $\displaystyle \sum_{i=l}^{r}f(i)$ 的复杂度。
-
-对于 $\displaystyle \sum_{i=1}^{N}(\lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor\times f(i)),N=\min(n,m)$，同样考虑整除分块，对于每个以 $l$ 为起点的块，令 $\displaystyle t_1=\lfloor\frac{n}{l}\rfloor,t_2=\lfloor\frac{m}{l}\rfloor$，块的终点为 $\displaystyle r=\min(\lfloor\frac{n}{t_1}\rfloor,\lfloor\frac{n}{t_2}\rfloor)$，块中元素和为 $\displaystyle \prod_{i=1}^{k=2}t_i\times \sum_{i=l}^{r}f(i)$。该方法可以推广至 $k$ 维整除分块：$\displaystyle \sum_{i=1}^{N}(\prod_{j=1}^{k}\lfloor\frac{n_j}{i}\rfloor\times f(i)),N=\min\{n_j\}$。
-
+对于每个以 $l$ 为起点的块，块中每一个元素的值都是 $\displaystyle t=\lfloor\frac{n}{l}\rfloor$，块的终点为 $\displaystyle r=\lfloor\frac{n}{t}\rfloor$，因此可以 $O(1)$ 计算块中元素的和，从而 $O(T\sqrt{n})$ 计算 $\displaystyle\sum_{i=1}^{n}(\lfloor\frac{n}{i}\rfloor\times f(i))$，其中 $T$ 取决于计算 $\displaystyle \sum_{i=l}^{r}f(i)$ 的复杂度。\\
+对于 $\displaystyle \sum_{i=1}^{N}(\lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor\times f(i)),N=\min(n,m)$，同样考虑整除分块，对于每个以 $l$ 为起点的块，令 $\displaystyle t_1=\lfloor\frac{n}{l}\rfloor,t_2=\lfloor\frac{m}{l}\rfloor$，块的终点为 $\displaystyle r=\min(\lfloor\frac{n}{t_1}\rfloor,\lfloor\frac{n}{t_2}\rfloor)$，块中元素和为 $\displaystyle \prod_{i=1}^{k=2}t_i\times \sum_{i=l}^{r}f(i)$。该方法可以推广至 $k$ 维整除分块：$\displaystyle \sum_{i=1}^{N}(\prod_{j=1}^{k}\lfloor\frac{n_j}{i}\rfloor\times f(i)),N=\min\{n_j\}$。\\
 注：$N=\min\{n_j\}$ 的原因在于当 $i>N$ 时至少有一个 $\displaystyle\lfloor\frac{n_j}{i}\rfloor$ 为 $0$，则和为 $0$，可以忽略；同时排除 $t_j=0$ 的情况，避免除以 $0$。
 \subsection{向上取整}
 \subsection{扩展数论分块}
@@ -406,23 +407,18 @@ int MPR(int n, int p, int l, int r) { // minimum primitive root
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	给定数列 $\{a_n\}$。求出数列 $\{b_n\}$，满足 $\displaystyle b_k=\sum_{i|k}a_i$。$1\leq n\leq 2\times 10^7$，$0\leq a_i< 2^{32}$
 \end{mdframed}
-
 首先介绍求解 $k$ 维前缀和的一般方法。给定 $k$ 维数组 $A$，大小为 $\displaystyle N=\prod_{i=1}^{k}{N_i}$，求其前缀和 $S$。若采用容斥原理，时间复杂度为 $O(N\times2^k)$，当 $k$ 较大时不够优秀。\\
-
 对于一般的情形，可以将 $S$ 表示为：
 \begin{equation*}
 	\displaystyle S_{i_1\cdots i_k}=\sum_{i'_1\le i_1}\cdots\sum_{i'_k\le i_k}A_{i'_1\cdots i'_k}
 \end{equation*}
-注意到 $k$ 维前缀和等价于进行 $k$ 次求和。因此每次只考虑一个维度，固定所有其它维度，然后对 $k$ 个维度分别求一维前缀和，得到的就是 $k$ 维前缀和。这种方法称为逐维前缀和，其时间复杂度为 $O(kN)$。
-
+注意到 $k$ 维前缀和等价于进行 $k$ 次求和。因此每次只考虑一个维度，固定所有其它维度，然后对 $k$ 个维度分别求一维前缀和，得到的就是 $k$ 维前缀和。这种方法称为逐维前缀和，其时间复杂度为 $O(kN)$。\\
 逐维前缀和可以解决一类问题：考虑大小为 $n$ 的集合的全体子集上定义的函数 $f$，求出其子集和函数 $g$，满足
 \begin{equation*}
 	\displaystyle g(S)=\sum_{T\subseteq S}f(T)
 \end{equation*}
-即 $g(S)$ 等于其所有子集 $T\subseteq S$ 上的函数值 $f(T)$ 的和，称其为子集和问题。
-
+即 $g(S)$ 等于其所有子集 $T\subseteq S$ 上的函数值 $f(T)$ 的和，称其为子集和问题。\\
 如果用朴素的子集枚举求解，复杂度为 $\displaystyle O(\sum_{i=1}^{n}\mathbf{C}_{n}^{i}\cdot2^n=3^n)$，而应用逐维前缀和可以达到 $O(n\cdot2^n)$。首先，将子集和问题表示为高维前缀和的形式：注意到 $S$ 的子集可以通过状态压缩的思想表示为长度为 $n$ 的二进制数 $s$，将其每一位都看作数组下标的一个维度，则 $f$ 就是一个 $n$ 维数组，且每个下标状态都是 $\{0,1\}$，即 $N=2^n$。同时，子集的包含关系等价于下标的大小关系，即 $T\subseteq S\iff\forall i(t_i\le s_i)$。因此子集和问题等价于 $n$ 维前缀和。
-
 \begin{lstlisting}
 for(int i = 0; i < n; i++) 
 	for(int j = 0; j < (1 << i); j++) 
@@ -466,23 +462,17 @@ for(int i = 1; i <= tot; i++)
 \section{图论基础}
 
 \newpage
-\section{特殊图问题}
-\subsection{二分图}
-\subsection{欧拉图}
-\subsection{哈密顿图}
-\subsection{竞赛图}
-\subsection{弦图}
-\subsection{平面图}
-\subsection{支配树}
+\section{最短路问题} % 包括斯坦纳树，最小环
 
 \newpage
-\section{最短路问题} % 包括斯坦纳树，最小环
-\newpage
 \section{生成树问题} 
+
 \newpage
 \section{连通性问题}
+
 \newpage
 \section{环计数问题}
+
 \newpage
 \section{网络流}
 \subsection{基本定义}
@@ -583,6 +573,7 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 回到原题，预处理出最小割树后，问题转化为：给定一棵 $n$ 阶非负权无根树，定义两点之间的距离为两点之间路径中的最小边权，每个询问给定非负整数 $x$，求距离小于等于 $x$ 的无序点对数量。考虑Kruskal重构树：将边权后放入大根堆，然后依次取出，在并查集上合并每条边两边端点所在的集合，并维护集合大小。设合并的两点 $\{x,y\}$ 所在的集合大小为 $s_x,s_y$，则有 $s_x\times s_y$ 个无序点对的距离为该边边权。设距离为 $w$ 的无序点对数量总共有 $p_w$ 个，则对于每次询问，通过在 $p$ 对应的前缀和数组上二分得到答案。总的时间复杂度为 $O(n^3m+n\log{n}+q\log{n})$。
 
 \subsection{有界流} % 上下界网络流
+
 \subsection{费用流}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	给定网络 $G=(\mathbf{V},\mathbf{E},c,w)$，若单位流量费用 $w(u,v)$ 也满足斜对称性，则将网络中总花费 $f\times w$ 最小的最大流称为最小费用最大流，即最大化 $|f|$ 的前提下最小化 
@@ -591,17 +582,29 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 	\end{equation*}
 \end{mdframed}
 \subsubsection{SSP算法}
-\subsubsection{Primal-Dual算法}
-\subsubsection{zkw费用流}
+\subsubsection{原始对偶算法} % Primal-Dual
+\subsubsection{ZKW费用流}
 \subsubsection{带负圈费用流}
-\subsection{图论建模}
+
 \subsection{线性规划}
+
+\subsection{常见模型}
+\subsubsection{点边转化}
+\subsubsection{分数规划}
+\subsubsection{最大权闭合图}
 
 \newpage
 \section{序理论}
 \subsection{基本定义}
 \subsection{拓扑排序}
 \subsection{Dilworth定理}
+
+\newpage
+\section{图的着色}
+
+\newpage
+\section{图的匹配}
+
 \newpage
 \section{树论基础}
 \subsection{树的遍历}
@@ -790,12 +793,15 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 
 \newpage
 \part{组合数学}
-
+\section{排列组合}
 \newpage
 \part{计算几何}
 
 \newpage
 \part{概率论}
+
+\newpage
+\part{信息论}
 
 \newpage
 \part{博弈论}
@@ -846,17 +852,6 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 
 \newpage
 \part{数据结构} % 包含离线算法
-\section{单调栈 }% 包含悬线法
-\section{单调队列}
-\section{链表} % 包含DLX
-\section{可并堆} % 包含左偏树
-\section{斐波那契堆}
-\section{哈希表} % 包含离散化
-\section{并查集}
-\section{ST表}
-\section{树状数组}
-\section{线段树}
-\section{平衡树}
 
 \newpage
 \part{动态规划}
@@ -892,10 +887,5 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \subsection{形式语言}
 \subsection{可计算性}
 \subsection{复杂性理论}
-\section{查找算法}
-\subsection{二分/三分}
-\subsection{分数规划}
-\subsection{双指针}
-\section{信息论}
 \section{随机化算法}
 \end{document}
