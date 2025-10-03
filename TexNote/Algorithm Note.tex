@@ -111,12 +111,12 @@
 
 \newpage
 \section{阶与原根}
+\subsection{基本定义}
+由欧拉定理可知，满足 $a^n\equiv1\pmod m$ 的最小 $n\in\mathbf{N^*}$ 存在，称为 $a$ 模 $m$ 的阶，记作 $\delta_m(a)$。若 $\gcd(a,m)=1$ 且 $\delta_m(a)=\varphi(m)$，称 $a$ 为模 $m$ 的原根。
 \subsection{性质与定理}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	给定 $n\in\mathbf{N^*}$，求它在 $[1,n)$ 中所有原根.
 \end{mdframed}
-由欧拉定理可知，满足 $a^n\equiv1\pmod m$ 的最小 $n\in\mathbf{N^*}$ 存在，称为 $a$ 模 $m$ 的阶，记作 $\delta_m(a)$。若 $\gcd(a,m)=1$ 且 $\delta_m(a)=\varphi(m)$，称 $a$ 为模 $m$ 的原根。\\
-\\
 阶的三条性质：
 \begin{enumerate}
 	\item 若 $a^n\equiv 1\pmod m$，则 $\delta_m{(a)}\mid n$
@@ -616,6 +616,7 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 \subsubsection{欧拉序}
 \subsubsection{DFS序}
 \subsection{树上差分}
+\subsection{树的同构}
 
 \newpage
 \section{树链剖分}
@@ -796,12 +797,10 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \section{排列组合}
 \newpage
 \part{计算几何}
+\section{几何基础}
 
 \newpage
 \part{概率论}
-
-\newpage
-\part{信息论}
 
 \newpage
 \part{博弈论}
@@ -849,6 +848,25 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 
 \newpage
 \part{字符串}
+\section{KMP算法} 
+% 包含前缀函数、失配树、最小循环子串、Z函数等
+\section{哈希函数} % 字符串哈希
+\section{BM算法}
+\section{字典树} 
+\section{AC自动机}
+\section{后缀数组} % 包含SA-IS算法
+\section{后缀自动机}
+\subsection{广义SAM}
+\section{后缀字典树}
+\section{后缀平衡树}
+\section{Manacher算法}
+\section{回文自动机} % 又称回文树
+\section{子序列自动机}
+\section{Lyndon分解} % 包含最小表示法
+\section{ML算法}
+
+\newpage
+\part{信息论}
 
 \newpage
 \part{数据结构} % 包含离线算法
@@ -869,13 +887,12 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \begin{equation*}
 	\displaystyle f_{v}=\max{\{f_{v}, f_{v-C}+W\}}, v\leftarrow (V\rightarrow C)
 \end{equation*}
-该过程简记为$\operatorname{ZOP}(f, C, W)$，即原问题等价于 $\{\operatorname{ZOP}(f, C_i,W_i)|i\leftarrow(1\rightarrow N)\}$。一个简单的常数优化是，在第 $i$ 次ZOP中，$v$ 的范围是 $\displaystyle V\rightarrow \max{\{C_i, V-\sum_{j=i}^{N}W_j\}}$。\\
-\\
-考虑此时 $f_v$ 的含义，其表示容量为 $v$ 的背包的最大合法解，因此对于要求恰好装满背包的0-1背包问题，初始时应该 $f_0\leftarrow0,f_{1\cdots N}\leftarrow-\infty$，即初始时只有容量为 $0$ 的背包有一个合法解 $0$。如果仅要求最后背包中物品的价值和最大，初始时 $f\leftarrow0$ 即可。 
+该过程简记为$\operatorname{ZOP}(f, C, W)$，即原问题等价于 $\{\operatorname{ZOP}(f, C_i,W_i)|i\leftarrow(1\rightarrow N)\}$。一个简单的常数优化是，在第 $i$ 次ZOP中，$v$ 的范围是 $\displaystyle V\rightarrow \max{\{C_i, V-\sum_{j=i}^{N}W_j\}}$。\\\\
+考虑此时 $f_v$ 的含义，其表示容量为 $v$ 的背包的最大合法解。因此对于要求恰好装满背包的0-1背包问题，初始时应该 $f_0\leftarrow0,f_{1\cdots N}\leftarrow-\infty$，即初始时只有容量为 $0$ 的背包有一个合法解 $0$。如果仅要求最后背包中物品的价值和最大，初始时 $f\leftarrow0$ 即可。例题为2022HangZhou-ICPC-C。
 
 \subsection{完全背包}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
-	有 $N$ 种物品和一个容量为 $V$ 的背包。放入第 $i$ 种物品耗费的费用/容量是 $C_i$，得到的价值是 $W_i$，且每种物品有无限个。求解将哪些物品装入背包可使价值总和最大。
+	有 $N$ 种物品和一个容量为 $V$ 的背包。放入第 $i$ 种物品耗费的容量是 $C_i$，得到的价值是 $W_i$，且每种物品有无限个。求解将哪些物品装入背包可使价值总和最大。
 \end{mdframed}
 显然，第 $i$ 种物品放入背包的数量上限是 $\displaystyle\lfloor V/C_i\rfloor$，同时由于每种物品是无限的，如果存在 $i,j\in N$ 使得 $C_i\le C_j,W_i\ge W_j$，将第 $j$ 种物品去掉不会影响答案。
 
