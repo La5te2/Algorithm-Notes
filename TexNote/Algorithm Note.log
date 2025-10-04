@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  4 OCT 2025 21:36
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  4 OCT 2025 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1008,43 +1008,43 @@ Package mdframed Info: mdframed detected package amsthm
 [45]
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 686--690
-
- []
-
-
 
 [47]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 729.
-
-Overfull \hbox (23.2848pt too wide) detected at line 741
-[]
- []
-
-
 
 [48]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 774.
+Underfull \hbox (badness 10000) in paragraph at lines 693--697
+
+ []
+
 
 
 [49]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 783.
+(mdframed)              on input line 736.
 
-Underfull \hbox (badness 10000) in paragraph at lines 803--805
-
+Overfull \hbox (23.2848pt too wide) detected at line 748
+[]
  []
 
 
 
 [50]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 781.
+
 
 [51]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 790.
+
+Underfull \hbox (badness 10000) in paragraph at lines 810--812
+
+ []
+
+
 
 [52]
 
@@ -1055,16 +1055,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 803--805
 [55]
 
 [56]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 856.
-File: image/game1.png Graphic file (type bmp)
-<image/game1.png>
-
 
 [57]
 
 [58]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 863.
+File: image/game1.png Graphic file (type bmp)
+<image/game1.png>
+
 
 [59]
 
@@ -1129,18 +1129,6 @@ File: image/game1.png Graphic file (type bmp)
 [89]
 
 [90]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 993.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1003--1006
-
- []
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1008.
-
 
 [91]
 
@@ -1149,8 +1137,28 @@ Package mdframed Info: mdframed detected package amsthm
 [93]
 
 [94]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1006.
 
-[95] (./Algorithm Note.aux)
+Underfull \hbox (badness 10000) in paragraph at lines 1016--1019
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1021.
+
+
+[95]
+
+[96]
+
+[97]
+
+[98]
+
+[99] (./Algorithm Note.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1171,4 +1179,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  74i,18n,92p,573b,1876s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Algorithm Note.pdf (95 pages).
+Output written on Algorithm Note.pdf (99 pages).
