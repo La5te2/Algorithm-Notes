@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  4 OCT 2025 20:48
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  4 OCT 2025 21:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -768,15 +768,17 @@ LaTeX Font Warning: Font shape `TU/SimSun(0)/b/n' undefined
 
 [3]
 
-[4])
+[4]
+
+[5])
 \tf@toc=\write4
 \openout4 = `"Algorithm Note.toc"'.
 
 
 
-[5]
-
 [6]
+
+[7]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 60.
@@ -793,9 +795,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 87--92
 
 
 
-[7]
-
 [8]
+
+[9]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 119.
@@ -811,7 +813,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--148
 
 
 
-[9]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 170--177
 
  []
@@ -828,7 +830,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 208--211
 
 
 
-[10]
+[11]
 
 Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
 (xeCJK)                
@@ -837,17 +839,17 @@ Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
 
 
 
-[11]
+[12]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 268.
 
 
-[12]
-
 [13]
 
 [14]
+
+[15]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 288.
@@ -856,7 +858,7 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 312.
 
 
-[15]
+[16]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 339.
@@ -872,9 +874,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 361--365
 
 
 
-[16]
-
 [17]
+
+[18]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 379.
@@ -885,21 +887,19 @@ Overfull \hbox (19.63475pt too wide) detected at line 399
 
 
 
-[18]
-
 [19]
+
+[20]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 409.
 
 
-[20]
+[21]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 451.
 
-
-[21]
 
 [22]
 
@@ -924,6 +924,8 @@ Package mdframed Info: mdframed detected package amsthm
 [32]
 
 [33]
+
+[34]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 514.
@@ -943,13 +945,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 527--536
 
 
 
-[34]
+[35]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 539.
 
 
-[35]
+[36]
 Underfull \hbox (badness 10000) in paragraph at lines 568--570
 
  []
@@ -961,7 +963,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 574--580
 
 
 
-[36]
+[37]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 585.
@@ -975,8 +977,6 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 595.
 
 
-[37]
-
 [38]
 
 [39]
@@ -984,6 +984,8 @@ Package mdframed Info: mdframed detected package amsthm
 [40]
 
 [41]
+
+[42]
 Underfull \hbox (badness 10000) in paragraph at lines 655--658
 
  []
@@ -995,24 +997,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 662--665
 
 
 
-[42]
+[43]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 673.
 
 
-[43]
-
 [44]
 
 [45]
+
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 686--690
 
  []
 
 
 
-[46]
+[47]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 729.
@@ -1023,13 +1025,13 @@ Overfull \hbox (23.2848pt too wide) detected at line 741
 
 
 
-[47]
+[48]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 774.
 
 
-[48]
+[49]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 783.
@@ -1039,8 +1041,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 803--805
  []
 
 
-
-[49]
 
 [50]
 
@@ -1053,14 +1053,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 803--805
 [54]
 
 [55]
+
+[56]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 856.
 File: image/game1.png Graphic file (type bmp)
 <image/game1.png>
 
-
-[56]
 
 [57]
 
@@ -1101,22 +1101,56 @@ File: image/game1.png Graphic file (type bmp)
 [75]
 
 [76]
+
+[77]
+
+[78]
+
+[79]
+
+[80]
+
+[81]
+
+[82]
+
+[83]
+
+[84]
+
+[85]
+
+[86]
+
+[87]
+
+[88]
+
+[89]
+
+[90]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 950.
+(mdframed)              on input line 993.
 
-Underfull \hbox (badness 10000) in paragraph at lines 960--963
+Underfull \hbox (badness 10000) in paragraph at lines 1003--1006
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 965.
+(mdframed)              on input line 1008.
 
 
-[77]
+[91]
 
-[78] (./Algorithm Note.aux)
+[92]
+
+[93]
+
+[94]
+
+[95] (./Algorithm Note.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1129,12 +1163,12 @@ Package rerunfilecheck Info: File `"Algorithm Note".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 17149 strings out of 468441
- 345655 string characters out of 5447384
+ 17152 strings out of 468441
+ 345699 string characters out of 5447384
  1072785 words of memory out of 5000000
- 45365 multiletter control sequences out of 15000+600000
+ 45368 multiletter control sequences out of 15000+600000
  635195 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  74i,18n,92p,573b,1876s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Algorithm Note.pdf (78 pages).
+Output written on Algorithm Note.pdf (95 pages).
