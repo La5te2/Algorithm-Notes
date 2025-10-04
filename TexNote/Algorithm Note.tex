@@ -37,6 +37,7 @@
 \begin{document}
 	
 \maketitle
+\setcounter{tocdepth}{2}
 \tableofcontents
 \makeatletter
 \@addtoreset{section}{part} % 每次换 part，section 重置
@@ -52,6 +53,7 @@
 \subsection{数论函数}
 \subsection{素数计数} % P7884 Meissel-Lehmer
 \subsection{升幂引理}
+
 \newpage
 \section{欧拉函数}
 \subsection{定义与性质}
@@ -474,7 +476,19 @@ for(int i = 1; i <= tot; i++)
 \section{环计数问题}
 
 \newpage
-\section{基环树问题}
+\section{2-SAT问题}
+
+\newpage
+\section{欧拉图问题}
+
+\newpage
+\section{竞赛图问题} % 包含哈密顿图
+
+\newpage
+\section{平面图问题}
+
+\newpage
+\section{弦图问题} % 包含区间图
 
 \newpage
 \section{网络流}
@@ -620,6 +634,7 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 \subsubsection{DFS序}
 \subsection{树上差分}
 \subsection{树的同构}
+\subsection{树上分治}
 
 \newpage
 \section{树链剖分}
@@ -659,6 +674,11 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 	给定树 $\mathbf{T}$，多次询问树上两点间路径权值和。
 \end{mdframed}
 
+\newpage
+\section{基环树问题}
+
+\newpage
+\section{虚树问题}
 \newpage
 \part{线性代数}
 \section{线性基}
