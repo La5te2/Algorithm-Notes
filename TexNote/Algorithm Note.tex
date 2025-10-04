@@ -474,6 +474,9 @@ for(int i = 1; i <= tot; i++)
 \section{环计数问题}
 
 \newpage
+\section{基环树问题}
+
+\newpage
 \section{网络流}
 \subsection{基本定义}
 给定有源汇网络 $(G,s,t)$，定义容量函数和流函数 $c,f:\mathbf{E}\rightarrow\mathbb{Z}|\mathbb{R}$，其满足如下条件：
@@ -753,6 +756,7 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \end{mdframed}
 若用贪心法得到 $S$ 的线性基 $B$，就再用消元法处理成 $B'$，使得基中任何一个二进制位至多有一个元素是 $1$，从而可以不重复使用任意一个元素就张成线性空间。\\
 设 $k_{(10)}=(k_M...k_0)_{(2)},p_i\in B'$，则第 $k$ 小异或和为 $\displaystyle\sum_{i=0}^{Bits}k_i\cdot p_i$。原序列中有 $0$ 则 $k\leftarrow k-1$。
+\subsection{实数线性基}
 
 \newpage
 \section{特征根}
@@ -795,12 +799,19 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \newpage
 \part{组合数学}
 \section{排列组合}
+
+\newpage
+\section{容斥原理}
+
 \newpage
 \part{计算几何}
 \section{几何基础}
 
 \newpage
 \part{概率论}
+\section{期望问题}
+\subsection{基本定义}
+\subsection{随机游走}
 
 \newpage
 \part{博弈论}
@@ -848,21 +859,49 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 
 \newpage
 \part{字符串}
-\section{KMP算法} 
-% 包含前缀函数、失配树、最小循环子串、Z函数等
-\section{哈希函数} % 字符串哈希
-\section{BM算法}
+\section{KMP算法} % 包含前缀函数、失配树、最小循环子串等
+
+\newpage
+\section{扩展KMP算法}
+
+\newpage
+\section{字符串哈希}
+
+\newpage
+\section{Boyer-Moore算法}
+
+\newpage
 \section{字典树} 
+
+\newpage
 \section{AC自动机}
+
+\newpage
 \section{后缀数组} % 包含SA-IS算法
+
+\newpage
 \section{后缀自动机}
 \subsection{广义SAM}
+
+\newpage
 \section{后缀字典树}
+
+\newpage
 \section{后缀平衡树}
+
+\newpage
 \section{Manacher算法}
+
+\newpage
 \section{回文自动机} % 又称回文树
+
+\newpage
 \section{子序列自动机}
+
+\newpage
 \section{Lyndon分解} % 包含最小表示法
+
+\newpage
 \section{ML算法}
 
 \newpage
@@ -870,6 +909,18 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 
 \newpage
 \part{数据结构} % 包含离线算法
+\section{并查集}
+\subsection{基本定义}
+\subsection{路径压缩}
+\subsection{启发式合并}
+\subsection{带权并查集}
+\subsection{种类并查集}
+
+\newpage
+\section{可并堆}
+
+\newpage
+\section{线段树}
 
 \newpage
 \part{动态规划}
