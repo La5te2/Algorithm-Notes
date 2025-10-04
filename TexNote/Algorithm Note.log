@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  4 OCT 2025 23:14
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  4 OCT 2025 23:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1012,7 +1012,7 @@ Package mdframed Info: mdframed detected package amsthm
 [47]
 
 [48]
-Underfull \hbox (badness 10000) in paragraph at lines 693--697
+Underfull \hbox (badness 10000) in paragraph at lines 694--698
 
  []
 
@@ -1021,9 +1021,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 693--697
 [49]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 736.
+(mdframed)              on input line 737.
 
-Overfull \hbox (23.2848pt too wide) detected at line 748
+Overfull \hbox (23.2848pt too wide) detected at line 749
 []
  []
 
@@ -1032,15 +1032,15 @@ Overfull \hbox (23.2848pt too wide) detected at line 748
 [50]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 781.
+(mdframed)              on input line 782.
 
 
 [51]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 790.
+(mdframed)              on input line 791.
 
-Underfull \hbox (badness 10000) in paragraph at lines 810--812
+Underfull \hbox (badness 10000) in paragraph at lines 811--813
 
  []
 
@@ -1061,7 +1061,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 810--812
 [58]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 863.
+(mdframed)              on input line 864.
 File: image/game1.png Graphic file (type bmp)
 <image/game1.png>
 
@@ -1139,15 +1139,15 @@ File: image/game1.png Graphic file (type bmp)
 [94]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1006.
+(mdframed)              on input line 1007.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1016--1019
+Underfull \hbox (badness 10000) in paragraph at lines 1017--1020
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1021.
+(mdframed)              on input line 1022.
 
 
 [95]
