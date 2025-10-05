@@ -86,8 +86,7 @@
 	\displaystyle a^b\equiv a^{b\bmod{\varphi(m)}+\varphi(m)}\pmod{m}
 \end{equation*}
 证明：当 $\gcd(a,m)=1$ 时，做法同1.2。\\
-当$\gcd(a,m)\neq1$时，由算术基本定理，$\displaystyle a=\prod_{i=1}^{k}p_i^{e_i}$，即证 $p_i^b\equiv p_i^{r+\varphi(m)}\pmod{m}$。\\记 $p_i$ 为 $p$ ，若$\gcd(p,m)=1$，证明同1.2，否则有 $m\ge 2p$。\\
-\\
+当$\gcd(a,m)\neq1$时，由算术基本定理，$\displaystyle a=\prod_{i=1}^{k}p_i^{e_i}$，即证 $p_i^b\equiv p_i^{r+\varphi(m)}\pmod{m}$。\\记 $p_i$ 为 $p$ ，若$\gcd(p,m)=1$，证明同1.2，否则有 $m\ge 2p$。\\\\
 令 $m=s\times p^t,t=\lfloor\log_p{m}\rfloor$，则 $\gcd(s,p^t)=\gcd(s,p)=1$，有
 \begin{equation*}
 	p^{\varphi(s)}\equiv1\pmod{s},\varphi(m)=\varphi(s)\varphi(p^t)\Rightarrow p^{\varphi(m)}=(p^{\varphi(s)})^{\varphi(p^t)}\equiv1\pmod{s}
@@ -139,11 +138,8 @@
 \begin{equation*}
 	(x_i-x_0)g(x_i)\equiv f(x_i)-f(x_0)\equiv0\pmod p
 \end{equation*}
-又 $x_i\not\equiv x_0\pmod p$，故 $g(x_i)\equiv0\pmod p$，从而 $g(x)\equiv0\pmod p$ 有至少 $n$ 个根，矛盾。所以，命题对 $n$ 次多项式也成立，定理获证。\\
-\\
-原根存在定理： $m=1,2,4,p,p^\alpha,2p^\alpha$，其中 $p$ 为奇素数，$\alpha\in\mathbf{N^*}$。
-\\
-\\
+又 $x_i\not\equiv x_0\pmod p$，故 $g(x_i)\equiv0\pmod p$，从而 $g(x)\equiv0\pmod p$ 有至少 $n$ 个根，矛盾。所以，命题对 $n$ 次多项式也成立，定理获证。\\\\
+原根存在定理： $m=1,2,4,p,p^\alpha,2p^\alpha$，其中 $p$ 为奇素数，$\alpha\in\mathbf{N^*}$。\\\\
 \textbf{命题1: 奇素数 $p$ 有原根.}
 \\引理：设 $a, b\in\mathbf{Z},\gcd(a,p)=\gcd(b,p)=1$，则存在 $c\in\mathbf{Z}$ 使得 \begin{equation*}
 	\delta_p(c)=lcm(\delta_p(a),\delta_p(b))
@@ -268,10 +264,12 @@ int MPR(int n, int p, int l, int r) { // minimum primitive root
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	求使得同余关系 $a^n\equiv 1\pmod{m}$ 对所有 $\gcd(a,m)=1$ 都成立的最小正整数 $n$. 
 \end{mdframed}
+
 \newpage
 \section{欧几里得算法}
 \subsection{扩展欧式算法} %包括辗转相除法
 \subsection{类欧式算法}
+
 \newpage
 \section{同余方程}
 \subsection{裴蜀定理}
@@ -282,6 +280,7 @@ int MPR(int n, int p, int l, int r) { // minimum primitive root
 \subsection{扩展CRT定理}
 \subsection{阶乘取模}
 \subsection{N次同余方程}
+
 \newpage
 \section{离散对数和剩余}
 \subsection{BSGS算法}
@@ -334,6 +333,7 @@ int MPR(int n, int p, int l, int r) { // minimum primitive root
 	\displaystyle \frac{a^k}{D}\cdot a^{X-k}\equiv\frac{b}{D}\ (mod\ \frac{m}{D})
 \end{equation*}
 此时应用\textbf{BSGS}即可。
+
 \newpage
 \subsection{离散对数筛}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
@@ -403,6 +403,7 @@ int MPR(int n, int p, int l, int r) { // minimum primitive root
 注：$N=\min\{n_j\}$ 的原因在于当 $i>N$ 时至少有一个 $\displaystyle\lfloor\frac{n_j}{i}\rfloor$ 为 $0$，则和为 $0$，可以忽略；同时排除 $t_j=0$ 的情况，避免除以 $0$。
 \subsection{向上取整}
 \subsection{扩展数论分块}
+
 \newpage
 \section{Dirichlet卷积}
 \subsection{Dirichlet前缀和}
@@ -621,6 +622,11 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 
 \newpage
 \section{图的匹配}
+\subsection{基本定义}
+\subsection{二分图最大匹配}
+\subsection{二分图最大权匹配}
+\subsection{树上匹配问题}
+\subsection{一般图最大匹配}
 
 \newpage
 \section{树论基础}
@@ -832,6 +838,15 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \section{容斥原理}
 
 \newpage
+\section{抽屉原理}
+
+\newpage
+\section{卡特兰数}
+
+\newpage
+\section{斯特林数}
+
+\newpage
 \part{计算几何}
 \section{几何基础}
 
@@ -954,7 +969,7 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \section{链表}
 
 \newpage
-\section{ST表}
+\section{稀疏表}
 
 \newpage
 \section{珂朵莉树}
@@ -966,20 +981,24 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \section{可并堆}
 
 \newpage
-\section{线段树}
+\section{线段树入门}
 
 \newpage
-\section{Treap树}
-
-\newpage
-\section{Splay树}
+\section{平衡树入门}
 
 \newpage
 \section{笛卡尔树}
+\subsection{基本定义}
 \subsection{广义笛卡尔树}
 
 \newpage
+\section{替罪羊树}
+
+\newpage
 \section{K-D树}
+
+\newpage
+\section{析合树}
 
 \newpage
 \section{分块入门}
@@ -997,7 +1016,11 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \section{CDQ分治}
 
 \newpage
-\section{动态树} % LCT
+\section{动态树}
+\subsection{Link-Cut Tree}
+\subsection{欧拉回路树}
+\subsection{全局平衡二叉树}
+\subsection{自适应Top-Tree}
 
 \newpage
 \part{动态规划}
