@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  5 OCT 2025 22:13
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  6 OCT 2025 01:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1067,16 +1067,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 817--819
 [61]
 
 [62]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 879.
-File: image/game1.png Graphic file (type bmp)
-<image/game1.png>
-
 
 [63]
 
 [64]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 885.
+File: image/game1.png Graphic file (type bmp)
+<image/game1.png>
+
 
 [65]
 
@@ -1147,28 +1147,32 @@ File: image/game1.png Graphic file (type bmp)
 [98]
 
 [99]
+
+[100]
+
+[101]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1030.
+(mdframed)              on input line 1036.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1040--1043
+Underfull \hbox (badness 10000) in paragraph at lines 1046--1049
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1045.
+(mdframed)              on input line 1051.
 
-
-[100]
-
-[101]
 
 [102]
 
 [103]
 
-[104] (./Algorithm Note.aux)
+[104]
+
+[105]
+
+[106] (./Algorithm Note.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1189,4 +1193,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  74i,18n,92p,573b,1878s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Algorithm Note.pdf (104 pages).
+Output written on Algorithm Note.pdf (106 pages).
