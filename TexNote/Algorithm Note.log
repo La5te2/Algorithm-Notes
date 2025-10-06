@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  6 OCT 2025 01:06
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.15)  6 OCT 2025 09:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1151,20 +1151,20 @@ File: image/game1.png Graphic file (type bmp)
 [100]
 
 [101]
+
+[102]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1036.
+(mdframed)              on input line 1045.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1046--1049
+Underfull \hbox (badness 10000) in paragraph at lines 1055--1058
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1051.
+(mdframed)              on input line 1060.
 
-
-[102]
 
 [103]
 
@@ -1172,7 +1172,13 @@ Package mdframed Info: mdframed detected package amsthm
 
 [105]
 
-[106] (./Algorithm Note.aux)
+[106]
+
+[107]
+
+[108]
+
+[109] (./Algorithm Note.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1185,12 +1191,12 @@ Package rerunfilecheck Info: File `"Algorithm Note".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 17154 strings out of 468441
- 345728 string characters out of 5447384
+ 17155 strings out of 468441
+ 345742 string characters out of 5447384
  1072785 words of memory out of 5000000
- 45370 multiletter control sequences out of 15000+600000
+ 45371 multiletter control sequences out of 15000+600000
  635195 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  74i,18n,92p,573b,1878s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Algorithm Note.pdf (106 pages).
+Output written on Algorithm Note.pdf (109 pages).
