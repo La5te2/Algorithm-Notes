@@ -468,10 +468,15 @@ for(int i = 1; i <= tot; i++)
 \section{最短路问题} % 包括斯坦纳树、最小环、负环、差分约束
 
 \newpage
-\section{生成树问题} % 包含矩阵树定理
+\section{生成树问题} % 包含矩阵树定理、拟阵
 
 \newpage
 \section{连通性问题}
+\subsection{基本定义}
+\subsection{Kosaraju算法}
+\begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
+	给定图 $G$，求强连通分量。
+\end{mdframed}
 
 \newpage
 \section{环计数问题}
@@ -487,6 +492,8 @@ for(int i = 1; i <= tot; i++)
 
 \newpage
 \section{平面图问题}
+\subsection{基本定义}
+\subsection{广义串并联图}
 
 \newpage
 \section{弦图问题} % 包含区间图
@@ -603,12 +610,12 @@ Dinic算法的核心思想是分层图以及相邻层之间增广，从而批量
 \subsubsection{原始对偶算法} % Primal-Dual
 \subsubsection{ZKW费用流}
 \subsubsection{带负圈费用流}
-
-\subsection{线性规划}
-
 \subsection{常见模型}
 \subsubsection{点边转化}
 \subsubsection{分数规划}
+\subsubsection{模拟费用流}
+详见IOI-2022.pdf，P203
+
 \subsubsection{最大权闭合图}
 
 \newpage
@@ -793,11 +800,13 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \subsection{实数线性基}
 
 \newpage
-\section{特征根}
+\section{特征根} % 特征根就是矩阵的特征方程的解
+\subsection{基本定义}
+\subsection{斐波那契数列}
+\subsection{带常齐次线性递推式}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	有一个 $1$ 行，$n+1$ 列的棋盘，编号为 $0$ 到 $n$。初始时刻，在位置 $m$ 有一颗棋子。如果某一秒棋子不位于 $n$，那么它将有 $p$ 的概率向左移动一格，$1-p$ 的概率向右移动一格；否则，棋子向左移动一格。求期望多少秒之后棋子能够到达$0$。答案对于$10^9+7$取模。$1\le m\le n\le 10^9$，保证 $p$ 和答案是有理数。
 \end{mdframed}
-
 设 $E_i$ 表示当棋子位于位置 $i$ 时期望走到 $0$ 的时间，则有 $n+1$ 个方程：
 \begin{align*}
 	E_i = 
@@ -815,17 +824,15 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \begin{equation*}
 	\displaystyle F_i=(\frac{1-p}{p})^{n-i}(F_n+\frac{1}{1-2p})-\frac{1}{1-2p} , F_n=1,p\ne\frac{1}{2}
 \end{equation*}
-当 $\displaystyle p\ne\frac{1}{2}$ 时，这是等比数列求和，否则 $F_i=F_{i+1}+2$，为等差数列求和。\\
-
-特征根就是矩阵的特征方程的解，考虑构造伴随矩阵并利用矩阵快速幂求解 $E_i$。对于第 $i+1$ 个方程，变形得带常数的齐次线性递推式 \begin{equation*}
+当 $\displaystyle p\ne\frac{1}{2}$ 时，这是等比数列求和，否则 $F_i=F_{i+1}+2$，为等差数列求和。\\\\
+此外，还可以考虑构造伴随矩阵并利用矩阵快速幂求解 $E_i$。对于第 $i+1$ 个方程，变形得带常数的齐次线性递推式 \begin{equation*}
 	\displaystyle E_{i+1}=\frac{1}{1-p}E_{i}-\frac{p}{1-p}E_{i-1}-\frac{1}{1-p},p\ne1
 \end{equation*}
 令 $v_{n+1}=Mv_n\Rightarrow v_n=M^{n-1}v_1$，有
 \begin{align*}
 	\displaystyle v_i&=\begin{bmatrix}E_i\\E_{i-1}\\1\end{bmatrix},v_1=\begin{bmatrix}E_1\\0\\1\end{bmatrix},M=\begin{bmatrix}\frac{1}{1-p} & -\frac{p}{1-p} & -\frac{1}{1-p}\\1 & 0 & 0\\0 & 0 & 1\end{bmatrix}
 \end{align*}
-通过 $E_n=E_{n-1}+1$ 解出 $E_1$，继而求出 $E_m,1\le m\le n$。注意取模和对应的乘法逆元。
-当 $p=1$ 时 $E_i=E_{i-1}+1$。
+通过 $E_n=E_{n-1}+1$ 解出 $E_1$，继而求出 $E_m,1\le m\le n$。当 $p=1$ 时 $E_i=E_{i-1}+1$。
 
 \newpage
 \part{抽象代数}
@@ -859,8 +866,13 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \newpage
 \part{概率论}
 \section{期望问题}
-\subsection{基本定义}
-\subsection{随机游走}
+\subsection{基本定义} % 包含随机变量和概率转化
+\subsection{条件期望}
+\subsection{经典模型} % 包含期望DP
+
+\newpage
+\section{随机游走}
+详见IOI-2019.pdf，P17
 
 \newpage
 \part{博弈论}
@@ -905,6 +917,9 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 
 \newpage
 \part{信息论}
+
+\newpage
+\part{微积分}
 
 \newpage
 \part{多项式}
@@ -961,9 +976,10 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \section{并查集}
 \subsection{基本定义}
 \subsection{路径压缩}
-\subsection{启发式合并}
+\subsection{按秩合并}
 \subsection{带权并查集}
 \subsection{种类并查集}
+\subsection{可撤销并查集}
 
 \newpage
 \section{哈希表}
@@ -987,10 +1003,7 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \section{可并堆}
 
 \newpage
-\section{0-1字典树}
-
-\newpage
-\section{线段树入门}
+\section{线段树入门} % 包括猫树、划分树、吉司机、李超、zkw
 
 \newpage
 \section{平衡树入门}
@@ -1028,6 +1041,10 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \section{可持久化}
 
 \newpage
+\section{可追溯化}
+详见Retroactive-DS.pdf
+
+\newpage
 \section{树套树}
 
 \newpage
@@ -1062,6 +1079,9 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 \end{mdframed}
 显然，第 $i$ 种物品放入背包的数量上限是 $\displaystyle\lfloor V/C_i\rfloor$，同时由于每种物品是无限的，如果存在 $i,j\in N$ 使得 $C_i\le C_j,W_i\ge W_j$，将第 $j$ 种物品去掉不会影响答案。
 
+\subsection{多重背包}
+\subsection{树形背包}
+\subsubsection{回退背包}
 \newpage
 \part{其他科技}
 \section{均摊分析}
@@ -1075,25 +1095,55 @@ SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏
 
 \newpage
 \section{随机化算法}
+\subsection{随机函数}
+\subsection{模拟退火} % 包含爬山算法
+\subsection{Moser算法}
+\subsection{蒙特卡洛方法}
 
 \newpage
 \section{启发式算法}
-\subsection{人类智慧}
+\subsection{人类智慧} % 启发函数
+\subsection{启发式搜索}
 \subsection{启发式合并}
 \subsection{启发式分裂}
 \subsection{DSU-on-Tree}
-\subsection{模拟退火}
 
 \newpage
 \section{根号分治}
 
 \newpage
 \section{数值算法}
-\subsection{实数域二分}
-\subsection{整数域三分}
+\subsection{区间逼近算法}
+\subsubsection{区间二分}
+\subsubsection{区间三分}
+\subsubsection{WQS二分}
+\subsubsection{牛顿迭代}
 \subsection{自适应辛普森}
-\subsection{牛顿迭代近似}
-\subsection{拉格朗日插值}
-\subsection{牛顿插值}
+\subsection{多项式插值} % 不用放入多项式章节
+
+\newpage
+\section{连续段问题}
+
+\newpage
+\section{编码问题} % 包含霍夫曼、括号序等
+
+\newpage
+\section{凸性函数问题}
+详见IOI-2023.pdf，P232
+
+\newpage
+\section{有界树宽问题}
+详见IOI-2023.pdf，P50
+
+\newpage
+\section{带限制最优化问题}
+\subsection{拉格朗日乘数法}
+详见IOI-2024.pdf，P37
+\subsection{拉格朗日对偶}
+\subsection{线性规划}
+
+\newpage
+\section{独立集问题}
+详见IOI-2017.pdf，P32
 
 \end{document}
