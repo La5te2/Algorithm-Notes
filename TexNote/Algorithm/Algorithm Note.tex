@@ -473,16 +473,24 @@ for(int i = 1; i <= tot; i++)
 \newpage
 \section{连通性问题}
 \subsection{基本定义}
-\subsection{Kosaraju算法}
+\subsection{强连通分量}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
-	给定图 $G$，求强连通分量。
+	 给定一个 $n$ 个点，$m$ 条边的有向图，求出这个图点数大于 $1$ 的强连通分量个数。
 \end{mdframed}
+\subsubsection{Kosaraju算法}
+Kosaraju算法使用两次DFS求出强连通分量。\\
+第一次DFS，选取任意顶点作为起点，后序遍历所有未访问过的顶点并标号。\\
+第二次DFS，对于反向后的图，以原图标号最大的顶点作为起点开始 DFS。\\
+这样遍历到的顶点集合就是一个强连通分量。对于所有未访问过的结点，选取标号最大的，重复第二次DFS过程直到所有点均被访问过。\\
+算法正确性证明如下：
+\begin{enumerate}
+	\item 必要性：在第二次DFS中，记反图DFS树的起点为 $T$，假设存在路径 $T\leadsto S$，则原图中存在路径 $S\leadsto T$ 且 $T$ 的标号大于 $S$ 的标号。考虑原图的DFS树，若 $T$ 是 $S$ 的祖先，则显然原图中 $T$ 可达 $S$。若 $T$ 不是 $S$ 的祖先，则由 $\operatorname{dfn}(T)<\operatorname{dfn}(S)$，$T$ 不在以 $S$ 为根的子树中，即 $T$ 所在的子树先访问到。
+\end{enumerate}
+\subsubsection{Tarjan算法}
+\subsection{2-SAT问题}
 
 \newpage
 \section{环计数问题}
-
-\newpage
-\section{2-SAT问题}
 
 \newpage
 \section{欧拉图问题}
@@ -803,7 +811,7 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \section{特征根} % 特征根就是矩阵的特征方程的解
 \subsection{基本定义}
 \subsection{斐波那契数列}
-\subsection{带常齐次线性递推式}
+\subsection{带常线性递推}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	有一个 $1$ 行，$n+1$ 列的棋盘，编号为 $0$ 到 $n$。初始时刻，在位置 $m$ 有一颗棋子。如果某一秒棋子不位于 $n$，那么它将有 $p$ 的概率向左移动一格，$1-p$ 的概率向右移动一格；否则，棋子向左移动一格。求期望多少秒之后棋子能够到达$0$。答案对于$10^9+7$取模。$1\le m\le n\le 10^9$，保证 $p$ 和答案是有理数。
 \end{mdframed}
@@ -840,6 +848,11 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \newpage
 \part{组合数学}
 \section{基本原理} % 排列组合、容斥、鸽巢
+\subsection{加法原理}
+\subsection{乘法原理}
+\subsection{排列组合}
+\subsection{鸽巢原理}
+\subsection{容斥原理}
 
 \newpage
 \section{卡特兰数}
@@ -849,6 +862,9 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 
 \newpage
 \section{伯努利数}
+
+\newpage
+\section{分拆数}
 
 \newpage
 \section{范德蒙德卷积}
@@ -893,7 +909,7 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \end{itemize}
 
 \newpage
-\subsection{简单Nim游戏}
+\subsection{Nim游戏}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	共有 $n$ 堆石子，第 $i$ 堆有 $a_i$ 枚石子。两名玩家轮流取走任意一堆中的任意多枚石子，但不能不取。取走最后一枚石子的玩家获胜。判断先手是否必胜。
 \end{mdframed}
@@ -912,8 +928,10 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 	\item 如果 $k\ne0$，构造一个合法移动，使得后继状态为必败状态：由归纳假设，只需要证明存在后继状态满足 $k'=0$ 即可。设 $k$ 的二进制表示中，最高位的 $1$ 是第 $d$ 位，则一定存在某个 $A_i$，使得其二进制第 $d$ 位是 $1$。对于相应的石子堆，一定有 $A_i>A_i\oplus k$。考虑将该石子堆减到 $A'_i=A_i\oplus k$，此时 $k'=A_1\oplus\cdots A'_i\oplus\cdots\oplus A_n=k\oplus k=0$。
 	\item 如果 $k=0$，需要证明该状态是必败状态。由归纳假设可知，只要证明它的所有后继状态的 Nim 和都不是 $0$。这是必然的，任何合法移动将 $A_i$ 变为 $A'_i\neq A_i$，都会使 $k'=k\oplus A_i\oplus A'_i\ne0$。
 \end{enumerate}
-\subsection{Sprague–Grundy理论}
-SG理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏由若干个相互独立的子游戏组成时，游戏的状态判定可以通过计算子游戏的SG函数值的Nim和来完成。
+\subsection{SG理论}
+Sprague–Grundy理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏由若干个相互独立的子游戏组成时，游戏的状态判定可以通过计算子游戏的SG函数值的Nim和来完成。
+\newpage
+\section{纳什均衡}
 
 \newpage
 \part{信息论}
