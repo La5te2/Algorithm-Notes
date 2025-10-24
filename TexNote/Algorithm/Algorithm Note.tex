@@ -57,18 +57,6 @@
 \newpage
 \section{欧拉函数}
 \subsection{定义与性质}
-\begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
-	给定 $n\in \mathbf{N^*}$， 求 $\varphi(n)$.
-\end{mdframed}
-定义欧拉函数: \begin{equation*}\displaystyle\varphi(n)=\sum_{i=1}^{n}[\gcd(i,n)=1]\end{equation*}
-通过算术基本定理有 $\displaystyle \varphi(n)=n\prod^{k}_{i=1}(1-\frac{1}{p_i})$，可证欧拉函数是积性函数，即
-\begin{equation*}
-	\gcd(n,m)=1\Rightarrow \varphi(nm)=\varphi(n)\varphi(m),\varphi(1)=1
-\end{equation*}
-通过莫比乌斯反演可以推出如下公式（欧拉反演）：
-\begin{equation*}
-	n=\sum_{d\mid n}\varphi(d)
-\end{equation*}
 \subsection{欧拉定理}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	给定 $a,b,m\in \mathbf{N^*},\gcd(a,m)=1$， 求 $a^b\bmod{m}$.
@@ -168,9 +156,8 @@
 综上，$g$ 为模 $p$ 的原根，奇素数都存在原根。
 \\
 \\
-\textbf{命题2: $p^{\alpha}$ 有原根.}
-\\引理1：存在模 $p$ 的原根 $g$，使得 $g^{p-1}\not\equiv1\pmod{p^2}$。
-
+\textbf{命题2: $p^{\alpha}$ 有原根.}\\
+引理1：存在模 $p$ 的原根 $g$，使得 $g^{p-1}\not\equiv1\pmod{p^2}$。
 设 $g$ 为模 $p$ 的原根，易证 $g+kp$ 也是模 $p$ 的原根。若 $g^{p-1}\equiv1\pmod{p^2}$，则 
 \begin{equation*}
 	(g+p)^{p-1}\equiv C^0_{p-1}g^{p-1}+C^1_{p-1}pg^{p-1}\equiv1+p(p-1)g^{p-2}\not\equiv1\pmod{p^2}
@@ -179,15 +166,12 @@
 \begin{equation*}
 	g^{\varphi(p^l)}=1+p^l\times k,p\nmid k
 \end{equation*}
-
 归纳法：$l=1$ 时由 $g$ 的选取结论显然成立，假设上式对 $l$ 时成立，则 
 \begin{equation*}
 	g^{\varphi(p^{l+1})}=(g^{\varphi(p^l)})^p=(1+p^l\times k)^p\equiv1+p^{l+1}\times k\pmod{p^{l+2}}
 \end{equation*}
-结合 $p\nmid k$ 可知引理2对 $l+1$ 成立，得证。
-
-回到原命题，满足引理1的原根 $g$ 是模 $p^\alpha$ 的原根，证明如下：
-
+结合 $p\nmid k$ 可知引理2对 $l+1$ 成立，得证。\\\\
+回到原命题，满足引理1的原根 $g$ 是模 $p^\alpha$ 的原根，证明如下：\\
 记 $\delta=\delta_{p^\alpha}(g)$，由欧拉定理和阶的性质，可知 
 \begin{align*}
 	\delta\mid\varphi(p^\alpha)=p^{\alpha-1}(p-1)\\ g^\delta\equiv1\pmod{p^\alpha}
@@ -197,14 +181,11 @@
 \end{equation*}结合 $g^\delta\equiv1\pmod{p^\alpha}$ 可知 $\beta\ge \alpha$。综上，$\beta=\alpha$，即 
 \begin{equation*}
 	\delta=p^{\alpha-1}(p-1)=\varphi(p^\alpha)
-\end{equation*}从而 $g$ 是模 $p^\alpha$ 的原根。
-\\
-\\\textbf{命题3: $2p^\alpha$ 有原根.}
-
+\end{equation*}从而 $g$ 是模 $p^\alpha$ 的原根。\\
+\\\textbf{命题3: $2p^\alpha$ 有原根.}\\
 记 $G$ 是模 $p^\alpha$ 的奇数原根，$\delta=\delta_{2p^\alpha}(G)$，则 $\gcd(G, 2p^\alpha)=1$。由欧拉定理，$\delta\mid \varphi(2p^\alpha)$。而 $G^\delta\equiv1\pmod{2p^\alpha}$，故 $G^\delta\equiv1\pmod{p^\alpha}$，结合 $G$ 是模 $p^\alpha$ 的原根可知 $\varphi(p^\alpha)\mid \delta$，所以 $\delta=\varphi(p^\alpha)=\varphi(2p^\alpha)$，即 $G$ 是模 $2p^\alpha$ 的原根。
 \\
-\\\textbf{命题4: 若 $m\neq 1,2,4,p^\alpha,2p^\alpha$，则对任意 $a\in\mathbf{Z},\gcd(a,m)=1$，都有 $\delta_m(a)<\varphi(m)$}。
-
+\\\textbf{命题4: 若 $m\neq 1,2,4,p^\alpha,2p^\alpha$，则对任意 $a\in\mathbf{Z},\gcd(a,m)=1$，都有 $\delta_m(a)<\varphi(m)$}。\\\\
 若 $m=2^\alpha,\alpha\in\mathbf{N^*},\alpha\ge3$，对于任意偶数均有 $\gcd(2k,m)\ne1$，对于任意奇数 $a=2k+1$，
 公式
 \begin{align*}
@@ -215,8 +196,7 @@
 	&\equiv 1+2^{\alpha-1}(k+(2^{\alpha-2}-1)k^2)\\
 	&\equiv 1 \pmod {2^{\alpha}}
 \end{align*}
-而 $2^{\alpha-2}<\varphi(m)=2^{\alpha-1}$。
-
+而 $2^{\alpha-2}<\varphi(m)=2^{\alpha-1}$。\\\\
 若 $m$ 不是 $2$ 的幂，可设 $m=rt,2<r<t,\gcd(r,t)=1$，由欧拉定理可知 
 \begin{equation*}
 	a^{\varphi(r)}\equiv1\pmod r,a^{\varphi(t)}\equiv1\pmod t
@@ -230,36 +210,17 @@
 \begin{equation*}
 	\displaystyle a^{\frac{1}{2}\varphi(r)\varphi(t)}\equiv1\pmod{rt}
 \end{equation*}
-进而有如下不等式：$\displaystyle\delta_m(a)\le\frac{1}{2}\varphi(r)\varphi(t)=\frac{1}{2}\varphi(rt)=\frac{1}{2}\varphi(m)<\varphi(m)$。
-
-综上，若 $m\neq 1,2,4,p^\alpha,2p^\alpha$，则对任意 $a\in\mathbf{Z},\gcd(a,m)=1$，都有 $\delta_m(a)<\varphi(m)$，即模 $m$ 的原根不存在。
-
+进而有如下不等式：$\displaystyle\delta_m(a)\le\frac{1}{2}\varphi(r)\varphi(t)=\frac{1}{2}\varphi(rt)=\frac{1}{2}\varphi(m)<\varphi(m)$。\\\\
+综上，若 $m\neq 1,2,4,p^\alpha,2p^\alpha$，则对任意 $a\in\mathbf{Z},\gcd(a,m)=1$，都有 $\delta_m(a)<\varphi(m)$，即模 $m$ 的原根不存在。\\
 由原根的定义，若 $g$ 为模 $m$ 的原根，则对于 $\varphi(m)$ 的任意素因数 $p$，必有 
 \begin{equation*}
 	g^{\varphi(m)/p}\not\equiv1\pmod{m}
 \end{equation*}
-且 $g^{\varphi(m)}\equiv1\pmod m$。反之，由 $\delta\mid\varphi$，满足上述条件的 $g$ 必定是模 $m$ 的原根。
+且 $g^{\varphi(m)}\equiv1\pmod m$。反之，由 $\delta\mid\varphi$，满足上述条件的 $g$ 必定是模 $m$ 的原根。\\
+假设正整数 $n$ 的一个原根是 $g$，由阶的性质3可知，任意满足 $\gcd(x,\varphi(n))=1$ 的 $x$，$g^x$ 都是模 $n$ 的原根，从而模 $n$ 意义下一共有 $\varphi(\varphi(n))$ 个原根。可以证明在 $[1,n)$ 中的最小原根 $g_n=O(n^{0.25+\epsilon})$。\\
+综上，预处理出 $\varphi(n)$ 的所有素因数，从小到大枚举 $g$，快速幂来判断是否是原根，找到最小原根后再枚举所有满足条件的 $g^x$ 即可。
 
-假设正整数 $n$ 的一个原根是 $g$，由阶的性质3可知，任意满足 $\gcd(x,\varphi(n))=1$ 的 $x$，$g^x$ 都是模 $n$ 的原根，从而模 $n$ 意义下一共有 $\varphi(\varphi(n))$ 个原根。可以证明在 $[1,n)$ 中的最小原根 $g_n=O(n^{0.25+\epsilon})$。
-
-综上，预处理出 $\varphi(n)$ 的所有素因数，从小到大枚举 $g$，快速幂来判断是否是原根，找到最小原根后再枚举所有满足条件的 $g^x$ 即可。代码如下：
-\begin{lstlisting}
-int MPR(int n, int p, int l, int r) { // minimum primitive root
-	int q = p; // EulerSieve first, p = phi[n]
-	std::vector<int> pri;
-	for(int i = 2; i * i <= q; i++) {
-		if(q % i == 0) pri.push_back(i);
-		while(q % i == 0) q /= i;
-	} if(q > 1) pri.push_back(q);
-	auto check = [&](int i) -> bool {
-		if(qpow(i, p, n) != 1) return 0;
-		for(auto j : pri) if(qpow(i, p / j, n) == 1) return 0;
-		return 1;
-	}; // l = 1, r = 50
-	for(int i = l; i <= r; i++) if(check(i)) return i;// n^0.25
-	return 0;
-}
-\end{lstlisting}
+\newpage
 \subsection{Carmichael函数}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	求使得同余关系 $a^n\equiv 1\pmod{m}$ 对所有 $\gcd(a,m)=1$ 都成立的最小正整数 $n$. 
@@ -851,9 +812,6 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 通过 $E_n=E_{n-1}+1$ 解出 $E_1$，继而求出 $E_m,1\le m\le n$。当 $p=1$ 时 $E_i=E_{i-1}+1$。
 
 \newpage
-\part{抽象代数}
-
-\newpage
 \part{组合数学}
 \section{基本原理} % 排列组合、容斥、鸽巢
 \subsection{加法原理}
@@ -915,8 +873,6 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 	\item 一个状态是必胜状态 $\mathcal N$ 当且仅当存在至少一个它的后继状态为必败状态 $\mathcal P$；
 	\item 一个状态是必败状态 $\mathcal P$ 当且仅当它的所有后继状态均为必胜状态 $\mathcal N$。
 \end{itemize}
-
-\newpage
 \subsection{Nim游戏}
 \begin{mdframed}[leftline=true, linewidth=2pt, linecolor=gray]
 	共有 $n$ 堆石子，第 $i$ 堆有 $a_i$ 枚石子。两名玩家轮流取走任意一堆中的任意多枚石子，但不能不取。取走最后一枚石子的玩家获胜。判断先手是否必胜。
@@ -938,6 +894,8 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \end{enumerate}
 \subsection{SG理论}
 Sprague–Grundy理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏由若干个相互独立的子游戏组成时，游戏的状态判定可以通过计算子游戏的SG函数值的Nim和来完成。
+\subsection{常见模型}
+
 \newpage
 \section{纳什均衡}
 
