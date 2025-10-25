@@ -813,9 +813,8 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 
 \newpage
 \part{组合数学}
-\section{基本原理} % 排列组合、容斥、鸽巢
-\subsection{加法原理}
-\subsection{乘法原理}
+\section{基本原理}
+\subsection{计数原理}
 \subsection{排列组合}
 \subsection{鸽巢原理}
 \subsection{容斥原理}
@@ -842,6 +841,9 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \section{图论计数}
 
 \newpage
+\section{生成函数}
+
+\newpage
 \part{计算几何}
 \section{几何基础}
 
@@ -851,9 +853,7 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \subsection{基本定义} % 包含随机变量和概率转化
 \subsection{条件期望}
 \subsection{经典模型} % 包含期望DP
-
-\newpage
-\section{随机游走}
+\subsubsection{随机游走}
 详见IOI-2019.pdf，P17
 
 \newpage
@@ -894,13 +894,7 @@ for(int i = Bits; i>= 0; i--) ans = max(ans, ans ^ p[i]);
 \end{enumerate}
 \subsection{SG理论}
 Sprague–Grundy理论指出，所有公平组合游戏都等价于单堆Nim游戏。当游戏由若干个相互独立的子游戏组成时，游戏的状态判定可以通过计算子游戏的SG函数值的Nim和来完成。
-\subsection{常见模型}
-
-\newpage
-\section{纳什均衡}
-
-\newpage
-\part{多项式}
+\subsection{经典模型}
 
 \newpage
 \part{字符串}
@@ -1060,8 +1054,9 @@ Sprague–Grundy理论指出，所有公平组合游戏都等价于单堆Nim游�
 \subsection{多重背包}
 \subsection{树形背包}
 \subsubsection{回退背包}
+
 \newpage
-\part{其他科技}
+\part{其他专题}
 \section{均摊分析}
 
 \newpage
